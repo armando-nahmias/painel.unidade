@@ -1,0 +1,247 @@
+---
+title: "Painel da Unidade"
+format: 
+  revealjs: 
+    auto-slide: 5000
+    loop: true
+    slide-number: c/t
+    embed-resources: true
+#    logo: 'painel.unidade.png'
+    footer: 'Fonte: SGE'
+    transition: fade
+    background-transition: fade
+    transition-speed: fast
+#    width: 1280
+#    height: 720
+title-slide-attributes: 
+  data-background-image: 'painel.unidade.png'
+  data-background-size: contain
+  data-background-opacity: '.5'
+
+---
+
+# Painel da Unidade {autoslide=10000 background-image='painel.unidade.jpg' background-opacity='.3'}
+
+- Missão do TJRR: Realizar Justiça para a promoção da paz social.
+- Visão para 2026: Ser uma instituição efetiva e inovadora na promoção da paz social.
+- Valores do TJRR: Credibilidade, ética, transparência, efetividade, qualidade, parceria, acessibilidade, celeridade, empatia, sustentabilidade e inovação.
+
+# Sistema de Gestão da Qualidade {autoslide=10000 background-image='painel.unidade.jpg' background-opacity='.3'}
+
+NBR ISO 9001
+
+"O Poder Judiciário de Roraima entrega a prestação jurisdicional de modo célere e efetivo com a promoção da melhoria contínua dos serviços, visando garantir a satisfação da sociedade."
+
+# Objetivos da Qualidade {background-image='painel.unidade.jpg' background-opacity='.3'}
+
+NBR ISO 9001
+
+1. garantir a satisfação dos usuários;
+1. buscar a celeridade dos serviços;
+1. assegurar a racionalização do tempo dos processos e dos procedimentos;
+1. assegurar a melhoria contínua do SGQ;
+1. obter a efetividade dos serviços.
+
+# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
+
+::: columns
+::: {.column width="50%"}
+
+:::: {.r-fit-text}
+Meta 1
+::::
+
+Julgar quantidade maior de processos de conhecimento do que os distribuídos no ano corrente, excluídos os suspensos e sobrestados no mesmo período.
+:::
+
+::: {.column width="50%"}
+{Meta 1 do mês em curso}
+
+{Meta 1 acumulada anual}
+:::
+:::
+
+# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
+
+::: columns
+::: {.column width="50%"}
+:::: {.r-fit-text}
+Meta 3
+::::
+
+Aumentar o indicador Índice de Conciliações do Justiça em Números (Sentenças Homologatórias de Acordo) em dois pontos percentuais em relação ao ano anterior.
+:::
+
+::: {.column width="50%"}
+{Meta 3 do mês em curso}
+
+{Meta 3 acumulada anual}
+:::
+:::
+
+# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
+
+::: columns
+::: {.column width="50%"}
+:::: {.r-fit-text}
+Taxa de Congestionamento
+::::
+
+Calculada a partir da razão do total de casos novos que ingressaram, pelos casos baixados e o estoque pendente ao final do período anterior ao período base.
+:::
+
+::: {.column width="50%"}
+{TC Líquida}
+
+{TC Total}
+:::
+:::
+
+# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
+
+::: columns
+::: {.column width="50%"}
+:::: {.r-fit-text}
+Processos Paralisados
+::::
+
+Quantidade de processos paralisados na secretaria sem motivo legal.
+:::
+
+::: {.column width="50%"}
+{paralisados há mais de 30 dias}
+
+{paralisados há mais de 100 dias}
+:::
+:::
+
+# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
+
+::: columns
+::: {.column width="50%"}
+:::: {.r-fit-text}
+Índice de Audiências
+::::
+
+Aumentar a efetividade na realização das audiências designadas na unidade em percentual superior a 80%.
+:::
+
+::: {.column width="50%"}
+{Índice de audiências do mês em curso}
+
+{Índice de audiências acumulada anual}
+:::
+:::
+
+# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
+
+::: columns
+::: {.column width="50%"}
+:::: {.r-fit-text}
+Processos antigos
+::::
+
+
+Reduzir o acervo de processos distribuídos até 31 de dezembro de 2020 para um percentual inferior a 20% do acervo total.
+:::
+
+::: {.column width="50%"}
+{antigos/total}
+
+{percentual antigos}
+:::
+:::
+
+# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
+
+::: columns
+::: {.column width="50%"}
+:::: {.r-fit-text}
+Tempo Médio de Tramitação
+::::
+
+
+Tempo efetivo de duração dos casos pendentes na unidade, calculado a partir do tempo decorrido entre a data do protocolo e o último dia ativo no ano-base.
+:::
+
+::: {.column width="50%"}
+{redução no ano corrente}
+
+{redução por período}
+
+{TMT atual}
+:::
+:::
+
+# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'  background-size=contain}
+
+::: columns
+::: {.column width="50%"}
+:::: {.r-fit-text}
+Tempo Médio de Conclusão
+::::
+
+Tempo médio que o processo permanece concluso ao magistrado aguardando prolação de sentença, decisão ou despacho, calculado a partir da média em dias da data da remessa à conclusão até a data do pronunciamento judicial.
+:::
+
+::: {.column width="50%"}
+:::: {.card}
+{despacho em dias}
+::::
+
+:::: {.card}
+{decisão em dias}
+::::
+
+:::: {.valuebox color="success"}
+{sentença em dias}
+::::
+
+:::
+:::
+
+# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3' background-size=contain}
+
+::: columns
+::: {.column width="50%"}
+:::: {.r-fit-text}
+Índice de Atendimento à Demanda
+::::
+
+O IAD indica a capacidade do Poder Judiciário em dar vazão em, pelo menos, o mesmo número de processos ingressados, situação em que o indicador alcança o valor igual ou superior a 100%.
+:::
+
+::: {.column width="50%"}
+{casos baixados/novos}
+
+{IAD}
+:::
+:::
+
+# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3' background-size=contain} 
+
+::: columns
+::: {.column width="50%"}
+Auditoria Externa
+
+ISO:9001
+
+1.ª Recertificação (2023)
+:::
+
+::: {.column width="50%"}
+{data dia da semana horário}
+
+:::
+:::
+
+# Teste
+
+::: columns
+::::{.column width='50%' text-align='center'}
+Coluna 1
+::::
+::::{.column width='50%' text-aling='center'}
+Coluna 2
+::::
+:::
