@@ -1,247 +1,340 @@
 ---
-title: "Painel da Unidade"
 format: 
-  revealjs: 
-    auto-slide: 5000
-    loop: true
+  revealjs:
+    css: 'configuracao/painel.unidade.css'
     slide-number: c/t
     embed-resources: true
-#    logo: 'painel.unidade.png'
-    footer: 'Fonte: SGE'
-    transition: fade
-    background-transition: fade
+    incremental: true
+    # auto-slide: 3000
+    transition: slide
     transition-speed: fast
-#    width: 1280
-#    height: 720
-title-slide-attributes: 
-  data-background-image: 'painel.unidade.png'
-  data-background-size: contain
-  data-background-opacity: '.5'
-
+    background-transition: fade
+    footer: 'Organização: Nugepnac <br> Fonte: Projudi'
+    loop: true
+    menu: false
 ---
 
-# Painel da Unidade {autoslide=10000 background-image='painel.unidade.jpg' background-opacity='.3'}
+```{r setup, include=FALSE}
+params <- yaml::read_yaml('parametros.yaml')
+```
 
-- Missão do TJRR: Realizar Justiça para a promoção da paz social.
-- Visão para 2026: Ser uma instituição efetiva e inovadora na promoção da paz social.
-- Valores do TJRR: Credibilidade, ética, transparência, efetividade, qualidade, parceria, acessibilidade, celeridade, empatia, sustentabilidade e inovação.
 
-# Sistema de Gestão da Qualidade {autoslide=10000 background-image='painel.unidade.jpg' background-opacity='.3'}
+# Painel da Unidade <br> `r params$Unidade` {background-image='imagens/0.painel.unidade.png' background-opacity='.3'}
 
-NBR ISO 9001
 
-"O Poder Judiciário de Roraima entrega a prestação jurisdicional de modo célere e efetivo com a promoção da melhoria contínua dos serviços, visando garantir a satisfação da sociedade."
+## {background-image='imagens/1.identidade.institucional.png'}
 
-# Objetivos da Qualidade {background-image='painel.unidade.jpg' background-opacity='.3'}
 
-NBR ISO 9001
+## {background-image='imagens/2.politica.qualidade.png'}
 
-1. garantir a satisfação dos usuários;
-1. buscar a celeridade dos serviços;
-1. assegurar a racionalização do tempo dos processos e dos procedimentos;
-1. assegurar a melhoria contínua do SGQ;
-1. obter a efetividade dos serviços.
 
-# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
+## {background-image='imagens/3.objetivos.qualidade.png'}
 
-::: columns
-::: {.column width="50%"}
+## `r params$Unidade` <br> Meta 1 {background-image='imagens/5.modelo2.png'}
 
-:::: {.r-fit-text}
-Meta 1
-::::
+:::: {.columns}
 
+::: {.column width="50%" }
+\
+\
 Julgar quantidade maior de processos de conhecimento do que os distribuídos no ano corrente, excluídos os suspensos e sobrestados no mesmo período.
 :::
 
-::: {.column width="50%"}
-{Meta 1 do mês em curso}
+::: {.column width="5%"}
 
-{Meta 1 acumulada anual}
-:::
 :::
 
-# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
 
-::: columns
-::: {.column width="50%"}
-:::: {.r-fit-text}
-Meta 3
+::: {.column width="45%"}
+\
+\
+`r params$Meta1Mes`
+\
+\
+\
+\
+\
+`r params$Meta1Anual`
+
+:::
+
 ::::
 
+
+## `r params$Unidade` <br> Meta 3 {background-image='imagens/5.modelo2.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
 Aumentar o indicador Índice de Conciliações do Justiça em Números (Sentenças Homologatórias de Acordo) em dois pontos percentuais em relação ao ano anterior.
 :::
 
-::: {.column width="50%"}
-{Meta 3 do mês em curso}
+::: {.column width="5%"}
 
-{Meta 3 acumulada anual}
-:::
 :::
 
-# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
 
-::: columns
-::: {.column width="50%"}
-:::: {.r-fit-text}
-Taxa de Congestionamento
+::: {.column width="45%"}
+\
+\
+`r params$Meta3Mes`
+\
+\
+\
+\
+\
+`r params$Meta3Anual`
+
+:::
+
 ::::
 
+
+## `r params$Unidade` <br> Taxa de Congestionamento {background-image='imagens/5.modelo2.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
 Calculada a partir da razão do total de casos novos que ingressaram, pelos casos baixados e o estoque pendente ao final do período anterior ao período base.
 :::
 
-::: {.column width="50%"}
-{TC Líquida}
+::: {.column width="5%"}
 
-{TC Total}
-:::
 :::
 
-# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
 
-::: columns
-::: {.column width="50%"}
-:::: {.r-fit-text}
-Processos Paralisados
+::: {.column width="45%"}
+\
+\
+`r params$TCL`
+\
+\
+\
+\
+\
+`r params$TCT`
+
+:::
+
 ::::
 
+
+## `r params$Unidade` <br> Processos Paralisados {background-image='imagens/5.modelo2.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+\
 Quantidade de processos paralisados na secretaria sem motivo legal.
 :::
 
-::: {.column width="50%"}
-{paralisados há mais de 30 dias}
+::: {.column width="5%"}
 
-{paralisados há mais de 100 dias}
-:::
 :::
 
-# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
 
-::: columns
-::: {.column width="50%"}
-:::: {.r-fit-text}
-Índice de Audiências
-::::
+::: {.column width="45%"}
+\
+\
+`r params$Parados30`
+\
+\
+\
+\
+\
+`r params$Parados100`
 
-Aumentar a efetividade na realização das audiências designadas na unidade em percentual superior a 80%.
 :::
 
-::: {.column width="50%"}
-{Índice de audiências do mês em curso}
-
-{Índice de audiências acumulada anual}
-:::
-:::
-
-# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
-
-::: columns
-::: {.column width="50%"}
-:::: {.r-fit-text}
-Processos antigos
 ::::
 
 
+## `r params$Unidade` <br> Índice de Audiências {background-image='imagens/5.modelo2.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+Aumentar a efetividade na realização das audiências designadas na unidade em questão em percentual superior a 80%.
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+\
+\
+`r params$AudienciasMes`
+\
+\
+\
+\
+\
+`r params$Audiencias`
+
+:::
+
+::::
+
+
+## `r params$Unidade` <br> Processos antigos {background-image='imagens/6.modelo3.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
 Reduzir o acervo de processos distribuídos até 31 de dezembro de 2020 para um percentual inferior a 20% do acervo total.
 :::
 
-::: {.column width="50%"}
-{antigos/total}
+::: {.column width="5%"}
 
-{percentual antigos}
-:::
 :::
 
-# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'}
 
-::: columns
-::: {.column width="50%"}
-:::: {.r-fit-text}
-Tempo Médio de Tramitação
+::: {.column width="45%"}
+\
+\
+`r params$ProcessosAntigos`
+\
+\
+`r params$ProcessosTotal`
+\
+\
+\
+`r params$AntigosPercentual`
+:::
+
 ::::
 
 
-Tempo efetivo de duração dos casos pendentes na unidade, calculado a partir do tempo decorrido entre a data do protocolo e o último dia ativo no ano-base.
+## `r params$Unidade` <br> Tempo Médio de Tramitação {background-image='imagens/6.modelo3.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+Tempo efetivo de duração dos casos pendentes na respectiva unidade, calculado a partir do tempo decorrido entre a data do protocolo e o último dia ativo no ano-base em questão.
 :::
 
-::: {.column width="50%"}
-{redução no ano corrente}
+::: {.column width="5%"}
 
-{redução por período}
-
-{TMT atual}
-:::
 :::
 
-# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3'  background-size=contain}
 
-::: columns
-::: {.column width="50%"}
-:::: {.r-fit-text}
-Tempo Médio de Conclusão
+::: {.column width="45%"}
+\
+\
+`r params$TMTCorrente`
+\
+\
+`r params$TMTPeriodo`
+\
+\
+\
+`r params$TMT`
+:::
+
 ::::
 
-Tempo médio que o processo permanece concluso ao magistrado aguardando prolação de sentença, decisão ou despacho, calculado a partir da média em dias da data da remessa à conclusão até a data do pronunciamento judicial.
+
+## `r params$Unidade` <br> Tempo Médio de Conclusão {background-image='imagens/6.modelo3.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+Tempo médio que o processo permanece concluso ao magistrado, calculado a partir da média em dias da data da remessa à conclusão até a data do pronunciamento.
 :::
 
-::: {.column width="50%"}
-:::: {.card}
-{despacho em dias}
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+\
+\
+`r params$TMCDespacho`
+\
+\
+`r params$TMCDecisao`
+\
+\
+\
+`r params$TMCSentenca`
+:::
+
 ::::
 
-:::: {.card}
-{decisão em dias}
+
+## `r params$Unidade` <br> IAD {background-image='imagens/6.modelo3.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+Capacidade de dar vazão em, pelo menos, o mesmo número de processos ingressados, situação em que o indicador alcança o valor igual ou superior a 100%.
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+\
+\
+`r params$IAD`
+\
+\
+`r params$IADBaixados`
+\
+\
+\
+`r params$IADNovos`
+:::
+
 ::::
 
-:::: {.valuebox color="success"}
-{sentença em dias}
-::::
 
-:::
-:::
+## `r params$Unidade` <br> Auditoria Externa {background-image='imagens/4.modelo1.png'}
 
-# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3' background-size=contain}
+:::: {.columns}
 
-::: columns
-::: {.column width="50%"}
-:::: {.r-fit-text}
-Índice de Atendimento à Demanda
-::::
-
-O IAD indica a capacidade do Poder Judiciário em dar vazão em, pelo menos, o mesmo número de processos ingressados, situação em que o indicador alcança o valor igual ou superior a 100%.
-:::
-
-::: {.column width="50%"}
-{casos baixados/novos}
-
-{IAD}
-:::
-:::
-
-# {Unidade} {background-image='painel.unidade.jpg' background-opacity='.3' background-size=contain} 
-
-::: columns
-::: {.column width="50%"}
-Auditoria Externa
-
+::: {.column width="50%" }
+\
+\
 ISO:9001
 
 1.ª Recertificação (2023)
-:::
-
-::: {.column width="50%"}
-{data dia da semana horário}
 
 :::
+
+::: {.column width="5%"}
+
 :::
 
-# Teste
 
-::: columns
-::::{.column width='50%' text-align='center'}
-Coluna 1
+::: {.column width="45%"}
+\
+\
+`r params$DataRecertificacao`
+
+:::
+
 ::::
-::::{.column width='50%' text-aling='center'}
-Coluna 2
-::::
-:::
+
+
