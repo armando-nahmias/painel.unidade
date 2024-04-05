@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Painel da Unidade</title>
+    <style>
+        /* Estilos básicos */
+        #painel-container {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id='painel-container'>
+    <iframe src='0.painel.1.instancia.html' id='painelAtual'></iframe>
+</div>
+
+<script>
+const paineis = [
+'0.painel.1.instancia.html',
+'1.meta1.html',
+'2.meta3.html',
+'3.taxa.congestionamento.html',
+'4.processos.paralisados.html',
+'5.indice.audiencias.html',
+'6.processos.antigos.html',
+'7.tempo.tramitacao.html',
+'8.tempo.conclusao.html',
+'9.atendimento.demanda.html'
+];
+    let indiceAtual = 0;
+
+    function mudarPainel() {
+        indiceAtual = (indiceAtual + 1) % paineis.length;
+        const painelAtual = document.getElementById('painelAtual');
+        painelAtual.src = paineis[indiceAtual];
+    }
+
+    // Mudar painel a cada 10 segundos
+    setInterval(mudarPainel, 2000);
+</script>
+
+</body>
+</html>

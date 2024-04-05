@@ -7,6 +7,10 @@ h1, h2, p {
   justify-content: center;
 }
 
-p {
-  color: white;
+.centralizado {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+

@@ -1,0 +1,457 @@
+---
+format: 
+  revealjs:
+    css: 'configuracao/painel.unidade.css'
+    slide-number: c/t
+    embed-resources: true
+    # auto-slide: 3000
+    transition: slide
+    transition-speed: fast
+    background-transition: fade
+    loop: true
+    menu: false
+    
+
+params:
+  Id: '3VCv'
+---
+
+```{r setup, include=FALSE}
+endereco <-
+  'dados/IndicadoresPainelUnidade.csv'
+
+dados <-
+  read.csv2(endereco) |> 
+  dplyr::filter(Id == params$Id)
+
+unidade <- dados$Unidade
+
+
+criar.tabela <- function(tabela, limite) {
+  tabela[2] <- gsub(',', '.', tabela[2])
+  tabela[2] <- gsub('%', '', tabela[2])
+
+  tabela <- t(tabela)
+  valor <- as.numeric(tabela[2])
+
+  cor.fonte <- ifelse(valor > limite, 'blue', 'red')
+
+  kableExtra::kable(
+    tabela,
+    align = 'c',
+    escape = FALSE,
+    col.names = NULL,
+    row.names = FALSE
+  ) |>
+    kableExtra::kable_styling(font_size = '1.5em',
+                              full_width = TRUE,
+                              position = 'center') |>
+    kableExtra::row_spec(0:nrow(tabela), extra_css = 'border-bottom: none;') |>
+    kableExtra::row_spec(2, bold = T, font_size = '1.5em', color = cor.fonte) |>
+    kableExtra::row_spec(3, bold = T, font_size = '.5em')
+  
+} 
+
+
+dados <- t(dados)
+
+df.tabela <- data.frame(
+  titulo = 'Anual',
+  valor = dados[, 1],
+  referencia = 'Ref.: 2024'
+)
+
+
+```
+
+# Painel da Unidade <br> `r unidade` {background-image="imagens/0.painel.unidade.png" background-opacity=".3"}
+
+## `r unidade` <br> Meta 1 {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+
+Julgar mais processos que os distribuídos
+
+::: {.columns}
+::: {.column width="50%"}
+```{r}
+
+indicador <- 'Meta1Mes'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 60
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+
+indicador <- 'Meta1Anual'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 60
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+:::
+
+## `r unidade` <br> Meta 3 {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+
+Texto
+
+::: {.columns}
+::: {.column width="50%"}
+```{r}
+
+indicador <- 'Meta3Anual'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 60
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+
+indicador <- 'Meta3Mes'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 60
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+:::
+
+## `r unidade` <br> Taxa de Congestionamento {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+
+Texto
+
+::: {.columns}
+::: {.column width="50%"}
+```{r}
+
+indicador <- 'TCL'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 60
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+
+indicador <- 'TCT'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 8
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+:::
+
+## `r unidade` <br> Processos Paralisados {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+
+Texto
+
+::: {.columns}
+::: {.column width="50%"}
+```{r}
+
+indicador <- 'Parados30'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 60
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+
+indicador <- 'Parados100'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 8
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+:::
+
+## `r unidade` <br> Índice de Audiências {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+
+Texto
+
+::: {.columns}
+::: {.column width="50%"}
+
+```{r}
+
+indicador <- 'AudienciasMes'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 60
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+
+indicador <- 'AudienciasAnual'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 8
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+:::
+
+## `r unidade` <br> Processos Antigos {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+
+Texto
+
+
+::: {.columns}
+::: {.column width="33%"}
+
+```{r}
+
+indicador <- 'ProcessosAntigos'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 60
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+
+indicador <- 'ProcessosTotal'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 8
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+
+indicador <- 'AntigosPercentual'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 8
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+:::
+
+## `r unidade` <br> Tempo Médio de Tramitação {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+
+Texto
+
+::: {.columns}
+::: {.column width="33%"}
+
+```{r}
+
+indicador <- 'TMTCorrente'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 60
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+
+indicador <- 'TMTPeriodo'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 8
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+
+indicador <- 'TMT'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 8
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+:::
+
+## `r unidade` <br> Tempo Médio de Conclusão {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+
+Texto
+
+::: {.columns}
+::: {.column width="33%"}
+
+```{r}
+
+indicador <- 'TMCDespacho'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 60
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+
+indicador <- 'TMCDecisao'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 8
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+
+indicador <- 'TMCSentenca'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 8
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+:::
+
+## `r unidade` <br> Índice de Atendimento à Demanda {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+
+Texto
+
+::: {.columns}
+::: {.column width="33%"}
+
+```{r}
+
+indicador <- 'IADBaixados'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 60
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+
+indicador <- 'IADNovos'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 8
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+
+indicador <- 'IAD'
+
+tabela <- df.tabela[rownames(df.tabela) == indicador, ]
+
+limite <- 8
+
+criar.tabela(tabela, limite)
+
+
+```
+:::
+:::

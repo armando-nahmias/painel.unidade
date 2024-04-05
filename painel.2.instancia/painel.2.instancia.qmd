@@ -1,0 +1,17 @@
+---
+params:
+  Id: 'GEL'
+
+format: 
+  revealjs:
+    css: '../configuracao/painel.unidade.css'
+    embed-resources: true
+    auto-slide: 3000
+    transition: slide
+    transition-speed: fast
+    background-transition: fade
+    menu: false
+---
+
+# Painel da Unidade {background-image='../imagens/0.painel.unidade.png' background-opacity='.3'}
+

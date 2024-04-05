@@ -1,0 +1,46 @@
+---
+format: 
+  revealjs:
+    css: 'configuracao/painel.unidade.css'
+    slide-number: c/t
+    embed-resources: true
+    incremental: true
+    # auto-slide: 3000
+    transition: slide
+    transition-speed: fast
+    background-transition: fade
+    footer: 'Fonte: Qlik TJRR'
+    loop: true
+    menu: false
+params:
+  Id: '3VCv'
+---
+
+```{r setup, include=FALSE}
+# params <- list(Id = '3VCv')
+
+endereco <-
+  'https://docs.google.com/spreadsheets/d/1Nw9Xj8TcuwFxeTml8oE_fPH0-SXWjRQzOCJsP_t1sms/edit#gid=0'
+
+dados <-
+  googlesheets4::read_sheet(endereco,
+                            sheet = '1InsT')
+
+
+dados <- dados |> 
+  dplyr::filter(Id == params$Id)
+
+```
+
+
+# Painel da Unidade <br> `r dados$Unidade` {background-image='imagens/0.painel.unidade.png' background-opacity='.3'}
+
+
+## {background-image='imagens/1.identidade.institucional.png'}
+
+
+## {background-image='imagens/2.politica.qualidade.png'}
+
+
+## {background-image='imagens/3.objetivos.qualidade.png'}
+

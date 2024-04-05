@@ -1,0 +1,53 @@
+---
+format: dashboard
+params:
+  Id: 'GEL'
+
+---
+
+
+```{r setup, include=FALSE}
+endereco <-
+  'https://docs.google.com/spreadsheets/d/1Nw9Xj8TcuwFxeTml8oE_fPH0-SXWjRQzOCJsP_t1sms/edit#gid=0'
+
+dados <-
+  googlesheets4::read_sheet(endereco,
+                            sheet = '2InsT')
+
+
+dados <- dados |> 
+  dplyr::filter(Id == params$Id)
+
+```
+
+
+# Painel da Unidade <br> `r dados$Unidade` {background-image='imagens/0.painel.unidade.png' background-opacity='.3'}
+
+
+# `r dados$Unidade` <br> Meta 1 {background-image='imagens/4.modelo.png'}
+::: {.texto}
+Julgar quantidade maior de processos de conhecimento do que os distribuídos no ano corrente, excluídos os suspensos e sobrestados no mesmo período.
+:::
+
+:::: {.columns}
+::: {.column width=60%}
+Left column
+:::
+::: {.column width=40%}
+Right column
+:::
+::::
+
+# `r dados$Unidade` <br> Meta 3 {background-image='imagens/4.modelo.png'}
+::: {.texto}
+Julgar quantidade maior de processos de conhecimento do que os distribuídos no ano corrente, excluídos os suspensos e sobrestados no mesmo período.
+:::
+
+:::: {.columns}
+::: {.column width=60%}
+Left column
+:::
+::: {.column width=40%}
+Right column
+:::
+::::
