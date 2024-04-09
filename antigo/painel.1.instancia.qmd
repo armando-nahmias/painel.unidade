@@ -1,0 +1,336 @@
+---
+format: 
+  revealjs:
+    css: 'configuracao/painel.unidade.css'
+    slide-number: c/t
+    embed-resources: true
+    auto-slide: 3000
+    transition: slide
+    transition-speed: fast
+    background-transition: fade
+    footer: 'Fonte: Projudi'
+    loop: true
+    menu: false
+---
+
+```{r setup, include=FALSE}
+params <- yaml::read_yaml('parametros.yaml')
+```
+
+
+# Painel da Unidade <br> `r params$Unidade` {background-image='imagens/0.painel.unidade.png' background-opacity='.3'}
+
+
+## {background-image='imagens/1.identidade.institucional.png'}
+
+
+## {background-image='imagens/2.politica.qualidade.png'}
+
+
+## {background-image='imagens/3.objetivos.qualidade.png'}
+
+## `r params$Unidade` <br> Meta 1 {background-image='imagens/4.modelo.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+Julgar quantidade maior de processos de conhecimento do que os distribuídos no ano corrente, excluídos os suspensos e sobrestados no mesmo período.
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+\
+\
+Março de 2024:\
+`r params$Meta1Mes`
+\
+\
+Acumulado anual:\
+`r params$Meta1Anual`
+
+:::
+
+::::
+
+
+## `r params$Unidade` <br> Meta 3 {background-image='imagens/4.modelo.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+Aumentar o indicador Índice de Conciliações do Justiça em Números (Sentenças Homologatórias de Acordo) em dois pontos percentuais em relação ao ano anterior.
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+\
+\
+\
+`r params$Meta3Mes`
+\
+\
+\
+`r params$Meta3Anual`
+
+:::
+
+::::
+
+
+## `r params$Unidade` <br> Taxa de Congestionamento {background-image='imagens/4.modelo.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+Calculada a partir da razão do total de casos novos que ingressaram, pelos casos baixados e o estoque pendente ao final do período anterior ao período base.
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+\
+\
+\
+`r params$TCL`
+\
+\
+\
+`r params$TCT`
+
+:::
+
+::::
+
+
+## `r params$Unidade` <br> Processos Paralisados {background-image='imagens/4.modelo.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+\
+Quantidade de processos paralisados na secretaria sem motivo legal.
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+\
+\
+`r params$Parados30`
+\
+\
+\
+\
+\
+`r params$Parados100`
+
+:::
+
+::::
+
+
+## `r params$Unidade` <br> Índice de Audiências {background-image='imagens/4.modelo.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+Aumentar a efetividade na realização das audiências designadas na unidade em questão em percentual superior a 80%.
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+\
+\
+`r params$AudienciasMes`
+\
+\
+\
+\
+\
+`r params$Audiencias`
+
+:::
+
+::::
+
+
+## `r params$Unidade` <br> Processos antigos {background-image='imagens/4.modelo.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+Reduzir o acervo de processos distribuídos até 31 de dezembro de 2020 para um percentual inferior a 20% do acervo total.
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+\
+\
+`r params$ProcessosAntigos`
+\
+\
+`r params$ProcessosTotal`
+\
+\
+\
+`r params$AntigosPercentual`
+:::
+
+::::
+
+
+## `r params$Unidade` <br> Tempo Médio de Tramitação {background-image='imagens/4.modelo.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+Tempo efetivo de duração dos casos pendentes na respectiva unidade, calculado a partir do tempo decorrido entre a data do protocolo e o último dia ativo no ano-base em questão.
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+\
+\
+`r params$TMTCorrente`
+\
+\
+`r params$TMTPeriodo`
+\
+\
+\
+`r params$TMT`
+:::
+
+::::
+
+
+## `r params$Unidade` <br> Tempo Médio de Conclusão {background-image='imagens/4.modelo.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+Tempo médio que o processo permanece concluso ao magistrado, calculado a partir da média em dias da data da remessa à conclusão até a data do pronunciamento.
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+\
+\
+`r params$TMCDespacho`
+\
+\
+`r params$TMCDecisao`
+\
+\
+\
+`r params$TMCSentenca`
+:::
+
+::::
+
+
+## `r params$Unidade` <br> IAD {background-image='imagens/4.modelo.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+Capacidade de dar vazão em, pelo menos, o mesmo número de processos ingressados, situação em que o indicador alcança o valor igual ou superior a 100%.
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+\
+\
+`r params$IAD`
+\
+\
+`r params$IADBaixados`
+\
+\
+\
+`r params$IADNovos`
+:::
+
+::::
+
+
+## `r params$Unidade` <br> Auditoria Externa {background-image='imagens/4.modelo.png'}
+
+:::: {.columns}
+
+::: {.column width="50%" }
+\
+\
+ISO:9001
+
+1.ª Recertificação (2023)
+
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+\
+\
+`r params$DataRecertificacao`
+
+:::
+
+::::
+
+

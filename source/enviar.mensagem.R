@@ -21,7 +21,7 @@ enviar.mensagem <-
     )
     
     mensagem <-
-      mensagem |> emayili::attachment(file.path('relatorios.1.instancia', arquivo.saida))
+      mensagem |> emayili::attachment(file.path('relatorios', arquivo.saida))
     
     configuracao.servidor <- emayili::server(
       host = "smtp.gmail.com",

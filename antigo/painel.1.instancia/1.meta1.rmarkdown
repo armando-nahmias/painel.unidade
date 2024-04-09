@@ -1,0 +1,75 @@
+---
+css: '../configuracao/painel.unidade.css'
+
+format: 
+  dashboard:
+    embed-resources: true
+
+params:
+  Id: '3VCv'
+---
+
+```{r setup, include=FALSE}
+endereco <-
+  '../dados/IndicadoresPainelUnidade.csv'
+
+dados <-
+  read.csv(endereco) |> 
+  dplyr::filter(Id == params$Id)
+
+```
+
+
+
+##
+
+`r dados$Unidade`
+
+## 
+
+###
+
+::: {.card title="Meta 1"}
+::: centralizado
+Julgar mais processos que os distribuídos
+:::
+:::
+
+## 
+
+
+```{r}
+#| content: valuebox
+#| title: "Março de 2024"
+
+mes <- as.POSIXlt(Sys.Date())
+
+cat("title=", format(mes, '%m/%Y'))
+
+list(
+  color = "primary",
+  value = dados$Meta1Mes
+)
+```
+
+```{r}
+#| content: valuebox
+list(
+  color = "white",
+  value =  ''
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Acumulado Anual"
+list(
+  color = ifelse(dados$Meta1Anual > 60, 'success', 'danger'),
+  value = dados$Meta1Anual
+)
+```
+
+
+##
+Fonte:
+

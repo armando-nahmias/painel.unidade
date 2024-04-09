@@ -1,0 +1,72 @@
+---
+css: '../configuracao/painel.unidade.css'
+
+format: 
+  dashboard:
+    embed-resources: true
+
+params:
+  Id: '3VCv'
+---
+
+
+```{r setup, include=FALSE}
+endereco <-
+  '../dados/IndicadoresPainelUnidade.csv'
+
+dados <-
+  read.csv2(endereco) |> 
+  dplyr::filter(Id == params$Id)
+
+```
+
+
+##
+
+`r dados$Unidade`
+
+## 
+
+###
+
+::: {.card title="IA"}
+::: centralizado
+Índice de Audiências
+:::
+:::
+
+### 
+
+```{r}
+#| content: valuebox
+#| title: "Março de 2024"
+
+mes <- as.POSIXlt(Sys.Date())
+
+cat("title=", format(mes, '%m/%Y'))
+
+list(
+  color = "primary",
+  value = dados$AudienciasMes
+)
+```
+
+```{r}
+#| content: valuebox
+list(
+  color = "white",
+  value =  ''
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Acumulado Anual"
+list(
+  color = 'danger',
+  value = dados$Audiencias
+)
+```
+
+##
+Fonte:

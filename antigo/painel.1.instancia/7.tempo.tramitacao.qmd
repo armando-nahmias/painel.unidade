@@ -1,0 +1,68 @@
+---
+css: '../configuracao/painel.unidade.css'
+
+format: 
+  dashboard:
+    embed-resources: true
+
+params:
+  Id: '3VCv'
+---
+
+
+```{r setup, include=FALSE}
+endereco <-
+  '../dados/IndicadoresPainelUnidade.csv'
+
+dados <-
+  read.csv2(endereco) |> 
+  dplyr::filter(Id == params$Id)
+
+```
+
+
+##
+
+`r dados$Unidade`
+
+## 
+
+###
+
+::: {.card title="TMT"}
+::: centralizado
+Tempo Médio de Tramitação
+:::
+:::
+
+### 
+
+```{r}
+#| content: valuebox
+#| title: "Redução no Ano Corrente (em dias)"
+list(
+  color = 'primary',
+  value = dados$AntigosPercentual
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Redução últimos 365 dias (em dias)"
+list(
+  color = 'primary',
+  value = dados$AntigosPercentual
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "TMT em dias/processo"
+list(
+  color = 'primary',
+  value = dados$AntigosPercentual
+)
+```
+
+##
+Fonte:
