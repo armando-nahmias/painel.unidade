@@ -70,8 +70,6 @@ criar.tabela <- function(tabela) {
 
 ## `r unidade` <br> Meta 1 {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
-Julgar mais processos que os distribuídos
-
 ::: {.columns}
 ::: {.column width="100%"}
 ```{r}
@@ -88,9 +86,9 @@ criar.tabela(tabela)
 
 :::
 
-## `r unidade` <br> Meta 3 {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+Julgar mais processos que os distribuídos
 
-Estimular a conciliação
+## `r unidade` <br> Meta 3 {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
 ::: {.columns}
 ::: {.column width="100%"}
@@ -108,9 +106,9 @@ criar.tabela(tabela)
 
 :::
 
-## `r unidade` <br> Taxa de Congestionamento Líquida {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+Estimular a conciliação
 
-Relação entre casos novos e casos baixados
+## `r unidade` <br> Taxa de Congestionamento Líquida {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
 ::: {.columns}
 ::: {.column width="100%"}
@@ -128,9 +126,9 @@ criar.tabela(tabela)
 
 :::
 
-## `r unidade` <br> Processos Paralisados {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+Relação entre casos novos e casos baixados
 
-Quantidade de processos parados sem motivo legal
+## `r unidade` <br> Processos Paralisados {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -160,9 +158,9 @@ criar.tabela(tabela)
 :::
 :::
 
-## `r unidade` <br> Índice de Audiências {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+Quantidade de processos parados sem motivo legal
 
-Relação entre audiência marcadas e realizadas
+## `r unidade` <br> Índice de Audiências {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
 ::: {.columns}
 ::: {.column width="100%"}
@@ -181,10 +179,9 @@ criar.tabela(tabela)
 
 :::
 
+Relação entre audiência marcadas e realizadas
+
 ## `r unidade` <br> Processos Antigos {background-image="imagens/1.TJRR.png" background-opacity=".2"}
-
-Reduzir acervo de processos distribuídos até 2020
-
 
 ::: {.columns}
 ::: {.column width="100%"}
@@ -203,9 +200,9 @@ criar.tabela(tabela)
 
 :::
 
-## `r unidade` <br> Tempo Médio de Tramitação {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+Reduzir acervo de processos distribuídos até 2020
 
-Tempo efetivo de duração dos processos pendentes
+## `r unidade` <br> Tempo Médio de Tramitação {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
 ::: {.columns}
 ::: {.column width="100%"}
@@ -224,9 +221,9 @@ criar.tabela(tabela)
 
 :::
 
-## `r unidade` <br> Tempo Médio de Conclusão {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+Tempo efetivo de duração dos processos pendentes
 
-Tempo que o processo permanece aguardando solução
+## `r unidade` <br> Tempo Médio de Conclusão {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
 ::: {.columns}
 ::: {.column width="100%"}
@@ -245,9 +242,9 @@ criar.tabela(tabela)
 
 :::
 
-## `r unidade` <br> Índice de Atendimento à Demanda {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+Tempo que o processo permanece aguardando solução
 
-Capacidade julgar a mesma quantidade de processos ingressados
+## `r unidade` <br> Índice de Atendimento à Demanda {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
 ::: {.columns}
 ::: {.column width="100%"}
@@ -265,3 +262,5 @@ criar.tabela(tabela)
 :::
 
 :::
+
+Capacidade julgar a mesma quantidade de processos ingressados
