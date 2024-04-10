@@ -20,7 +20,7 @@ write.csv2(indicadores, 'dados/IndicadoresPainelUnidade.csv', row.names = F)
 unidades <- dados |> 
   dplyr::select(Id) |> 
   dplyr::pull() |>
-  setNames(c('Id', 'Id'))
+  setNames(rep('Id', nrow(dados)))
 
 for (unidade in unidades) {
   unidade.nomeada <- list(Id = unidade)
@@ -29,7 +29,7 @@ for (unidade in unidades) {
   
   quarto::quarto_render(execute_params = unidade.nomeada, input = 'painel.1.instancia.qmd', output_file = arquivo.saida)
   
-  fs::file_move(arquivo.saida, file.path('relatorios', arquivo.saida))
+  fs::file_move(arquivo.saida, file.path('docs', arquivo.saida))
   
   if (Teste) {
     next

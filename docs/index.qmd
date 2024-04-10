@@ -1,11 +1,30 @@
 ---
-title: "Paineis das Unidades Certificadas"
-format: html
+title: 'Painéis das Unidades'
+format: 
+  html:
+    embed-resources: true
+
 ---
 
-# Referências para Arquivos
+```{r echo=FALSE}
+endereco <-
+  '../dados/IndicadoresPainelUnidade.csv'
 
-Aqui estão as referências para os arquivos localizados no mesmo diretório:
+indicadores <- read.csv2(endereco)
 
-- [Link para o Relatório 3 Cível](relatorio_3VCv.html)
-- [Link para o Relatório 4 Cível](relatorio_4VCv.html)
+selecao <- indicadores |> 
+  dplyr::filter(!is.na(Unidade)) |> 
+  dplyr::mutate(
+    Unidade = sprintf('<a href="relatorio_%s.html">%s</a>', Id, Unidade)
+  ) |> 
+  dplyr::select(Unidade)
+
+
+kableExtra::kable(
+  selecao,
+  align = 'c',
+  escape = FALSE,
+  col.names = NULL
+)
+```
+

@@ -4,7 +4,7 @@ format:
     css: 'configuracao/painel.unidade.css'
     slide-number: c/t
     embed-resources: true
-    # auto-slide: 3000
+    auto-slide: 3000
     transition: slide
     transition-speed: fast
     background-transition: fade
@@ -17,27 +17,32 @@ params:
 ---
 
 ```{r setup, include=FALSE}
+
+## colocar símbolo de percentual
+## formatação ptbr incluindo vírgula
+
+
 endereco <-
   'dados/IndicadoresPainelUnidade.csv'
 
-selecao <- c(params$Id, 'Período', 'Limite')
+selecao <- c(params$Id, 'Limite')
 
-dados <-
-  read.csv2(endereco) |> 
-  dplyr::filter(Id %in% selecao) |> 
-  dplyr::mutate(ordem = c(2,1,3)) |>
-  dplyr::arrange(ordem)
+indicadores <- read.csv2(endereco)
 
+dados <- indicadores |> 
+  dplyr::filter(Id %in% selecao)
 
-unidade <- dados$Unidade[2]
+unidade <- dados$Unidade[1]
 
 criar.tabela <- function(tabela) {
-  tabela[2, ] <- gsub(',', '.', tabela[2, ])
-  tabela[2, ] <- gsub('%', '', tabela[2, ])
+  tabela[1, ] <- gsub(',', '.', tabela[1, ])
+  tabela[1, ] <- gsub('%', '', tabela[1, ])
+  tabela[1, ] <- formatC(tabela[1, ], digits = 2, decimal.mark = ',')
+  tabela[1, ] <- paste0(tabela[1, ], '%')
 
-  valor <- as.numeric(tabela[2, ])
+  valor <- as.numeric(tabela[1, ])
   
-  limite <- as.numeric(tabela[3, ])
+  limite <- as.numeric(tabela[2, ])
   
   cor.fonte <- ifelse(valor > limite, 'blue', 'red')
 
@@ -52,8 +57,8 @@ criar.tabela <- function(tabela) {
                               full_width = TRUE,
                               position = 'center') |>
     kableExtra::row_spec(0:nrow(tabela), extra_css = 'border-bottom: none;') |>
-    kableExtra::row_spec(2, bold = T, font_size = '1.5em', color = cor.fonte) |>
-    kableExtra::row_spec(3, bold = T, font_size = '.5em')
+    kableExtra::row_spec(1, bold = T, font_size = '1.5em', color = cor.fonte) |>
+    kableExtra::row_spec(2, bold = T, font_size = '.5em')
   
 } 
 
@@ -61,17 +66,17 @@ criar.tabela <- function(tabela) {
 
 ```
 
-# Painel da Unidade <br> `r unidade` {background-image="imagens/0.painel.unidade.png" background-opacity=".3"}
+# Painel da Unidade <br> `r unidade` {background-image="imagens/0.painel.unidade.png" background-opacity=".2"}
 
-## `r unidade` <br> Meta 1 {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+## `r unidade` <br> Meta 1 {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
 Julgar mais processos que os distribuídos
 
 ::: {.columns}
-::: {.column width="50%"}
+::: {.column width="100%"}
 ```{r}
 
-indicador <- 'Meta1Mes'
+indicador <- 'Meta1'
 
 tabela <- dados[colnames(dados) == indicador]
 
@@ -81,29 +86,17 @@ criar.tabela(tabela)
 ```
 :::
 
-::: {.column width="50%"}
-```{r}
-
-indicador <- 'Meta1Anual'
-
-tabela <- dados[colnames(dados) == indicador]
-
-criar.tabela(tabela)
-
-
-```
-:::
 :::
 
-## `r unidade` <br> Meta 3 {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+## `r unidade` <br> Meta 3 {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
-Texto
+Estimular a conciliação
 
 ::: {.columns}
-::: {.column width="50%"}
+::: {.column width="100%"}
 ```{r}
 
-indicador <- 'Meta3Anual'
+indicador <- 'Meta3'
 
 tabela <- dados[colnames(dados) == indicador]
 
@@ -113,26 +106,14 @@ criar.tabela(tabela)
 ```
 :::
 
-::: {.column width="50%"}
-```{r}
-
-indicador <- 'Meta3Mes'
-
-tabela <- dados[colnames(dados) == indicador]
-
-criar.tabela(tabela)
-
-
-```
-:::
 :::
 
-## `r unidade` <br> Taxa de Congestionamento {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+## `r unidade` <br> Taxa de Congestionamento Líquida {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
-Texto
+Relação entre casos novos e casos baixados
 
 ::: {.columns}
-::: {.column width="50%"}
+::: {.column width="100%"}
 ```{r}
 
 indicador <- 'TCL'
@@ -145,23 +126,11 @@ criar.tabela(tabela)
 ```
 :::
 
-::: {.column width="50%"}
-```{r}
-
-indicador <- 'TCT'
-
-tabela <- dados[colnames(dados) == indicador]
-
-criar.tabela(tabela)
-
-
-```
-:::
 :::
 
-## `r unidade` <br> Processos Paralisados {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+## `r unidade` <br> Processos Paralisados {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
-Texto
+Quantidade de processos parados sem motivo legal
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -191,16 +160,16 @@ criar.tabela(tabela)
 :::
 :::
 
-## `r unidade` <br> Índice de Audiências {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+## `r unidade` <br> Índice de Audiências {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
-Texto
+Relação entre audiência marcadas e realizadas
 
 ::: {.columns}
-::: {.column width="50%"}
+::: {.column width="100%"}
 
 ```{r}
 
-indicador <- 'AudienciasMes'
+indicador <- 'Audiencias'
 
 tabela <- dados[colnames(dados) == indicador]
 
@@ -210,27 +179,15 @@ criar.tabela(tabela)
 ```
 :::
 
-::: {.column width="50%"}
-```{r}
-
-indicador <- 'AudienciasAnual'
-
-tabela <- dados[colnames(dados) == indicador]
-
-criar.tabela(tabela)
-
-
-```
-:::
 :::
 
-## `r unidade` <br> Processos Antigos {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+## `r unidade` <br> Processos Antigos {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
-Texto
+Reduzir acervo de processos distribuídos até 2020
 
 
 ::: {.columns}
-::: {.column width="33%"}
+::: {.column width="100%"}
 
 ```{r}
 
@@ -244,66 +201,15 @@ criar.tabela(tabela)
 ```
 :::
 
-::: {.column width="33%"}
-```{r}
-
-indicador <- 'ProcessosTotal'
-
-tabela <- dados[colnames(dados) == indicador]
-
-criar.tabela(tabela)
-
-
-```
 :::
 
-::: {.column width="33%"}
-```{r}
+## `r unidade` <br> Tempo Médio de Tramitação {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
-indicador <- 'AntigosPercentual'
-
-tabela <- dados[colnames(dados) == indicador]
-
-criar.tabela(tabela)
-
-
-```
-:::
-:::
-
-## `r unidade` <br> Tempo Médio de Tramitação {background-image="imagens/1.TJRR.png" background-opacity=".3"}
-
-Texto
+Tempo efetivo de duração dos processos pendentes
 
 ::: {.columns}
-::: {.column width="33%"}
+::: {.column width="100%"}
 
-```{r}
-
-indicador <- 'TMTCorrente'
-
-tabela <- dados[colnames(dados) == indicador]
-
-criar.tabela(tabela)
-
-
-```
-:::
-
-::: {.column width="33%"}
-```{r}
-
-indicador <- 'TMTPeriodo'
-
-tabela <- dados[colnames(dados) == indicador]
-
-criar.tabela(tabela)
-
-
-```
-:::
-
-::: {.column width="33%"}
 ```{r}
 
 indicador <- 'TMT'
@@ -315,18 +221,19 @@ criar.tabela(tabela)
 
 ```
 :::
+
 :::
 
-## `r unidade` <br> Tempo Médio de Conclusão {background-image="imagens/1.TJRR.png" background-opacity=".3"}
+## `r unidade` <br> Tempo Médio de Conclusão {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
-Texto
+Tempo que o processo permanece aguardando solução
 
 ::: {.columns}
-::: {.column width="33%"}
+::: {.column width="100%"}
 
 ```{r}
 
-indicador <- 'TMCDespacho'
+indicador <- 'TMC'
 
 tabela <- dados[colnames(dados) == indicador]
 
@@ -336,66 +243,15 @@ criar.tabela(tabela)
 ```
 :::
 
-::: {.column width="33%"}
-```{r}
-
-indicador <- 'TMCDecisao'
-
-tabela <- dados[colnames(dados) == indicador]
-
-criar.tabela(tabela)
-
-
-```
 :::
 
-::: {.column width="33%"}
-```{r}
+## `r unidade` <br> Índice de Atendimento à Demanda {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
-indicador <- 'TMCSentenca'
-
-tabela <- dados[colnames(dados) == indicador]
-
-criar.tabela(tabela)
-
-
-```
-:::
-:::
-
-## `r unidade` <br> Índice de Atendimento à Demanda {background-image="imagens/1.TJRR.png" background-opacity=".3"}
-
-Texto
+Capacidade julgar a mesma quantidade de processos ingressados
 
 ::: {.columns}
-::: {.column width="33%"}
+::: {.column width="100%"}
 
-```{r}
-
-indicador <- 'IADBaixados'
-
-tabela <- dados[colnames(dados) == indicador]
-
-criar.tabela(tabela)
-
-
-```
-:::
-
-::: {.column width="33%"}
-```{r}
-
-indicador <- 'IADNovos'
-
-tabela <- dados[colnames(dados) == indicador]
-
-criar.tabela(tabela)
-
-
-```
-:::
-
-::: {.column width="33%"}
 ```{r}
 
 indicador <- 'IAD'
@@ -407,4 +263,5 @@ criar.tabela(tabela)
 
 ```
 :::
+
 :::
