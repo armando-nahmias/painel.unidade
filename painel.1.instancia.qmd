@@ -38,7 +38,7 @@ criar.tabela <- function(tabela) {
   tabela[1, ] <- gsub(',', '.', tabela[1, ])
   tabela[1, ] <- gsub('%', '', tabela[1, ])
   tabela[1, ] <- formatC(tabela[1, ], digits = 2, decimal.mark = ',')
-  tabela[1, ] <- paste0(tabela[1, ], '%')
+  
 
   valor <- as.numeric(tabela[1, ])
   
