@@ -15,7 +15,7 @@ parametros <-
 
 indicadores <- rbind(dados, parametros)
 
-write.csv2(indicadores, 'dados/IndicadoresPainelUnidade.csv', row.names = F)
+readr::write_rds(indicadores, 'dados/IndicadoresPainelUnidade.rds')
 
 unidades <- dados |> 
   dplyr::select(Id) |> 

@@ -23,11 +23,11 @@ params:
 
 
 endereco <-
-  'dados/IndicadoresPainelUnidade.csv'
+  'dados/IndicadoresPainelUnidade.rds'
 
 selecao <- c(params$Id, 'Limite')
 
-indicadores <- read.csv2(endereco)
+indicadores <- readr::read_rds(endereco)
 
 dados <- indicadores |> 
   dplyr::filter(Id %in% selecao)
@@ -35,13 +35,9 @@ dados <- indicadores |>
 unidade <- dados$Unidade[1]
 
 criar.tabela <- function(tabela) {
-  tabela[1, ] <- gsub(',', '.', tabela[1, ])
-  tabela[1, ] <- gsub('%', '', tabela[1, ])
-  tabela[1, ] <- formatC(tabela[1, ], digits = 2, decimal.mark = ',')
-  
+  valor <- gsub(',', '.', tabela[1, ]) |>
+    as.numeric()
 
-  valor <- as.numeric(tabela[1, ])
-  
   limite <- as.numeric(tabela[2, ])
   
   cor.fonte <- ifelse(valor > limite, 'blue', 'red')
