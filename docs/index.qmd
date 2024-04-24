@@ -8,9 +8,9 @@ format:
 
 ```{r echo=FALSE}
 endereco <-
-  '../dados/IndicadoresPainelUnidade.csv'
+  '../dados/IndicadoresPainelUnidade.rds'
 
-indicadores <- read.csv2(endereco)
+indicadores <- readr::read_rds(endereco)
 
 selecao <- indicadores |> 
   dplyr::filter(!is.na(Unidade)) |> 

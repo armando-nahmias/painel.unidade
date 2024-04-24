@@ -42,4 +42,5 @@ for (unidade in unidades) {
   
 }
 
+quarto::quarto_render('docs/index.qmd')
 

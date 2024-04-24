@@ -1,6 +1,6 @@
 /* painel.unidade.css */
 
-h1, h2, p {
+h1, h2, h3, p {
   text-align: center;
   display: flex;
   flex-direction: column;

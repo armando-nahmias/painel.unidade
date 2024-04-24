@@ -18,9 +18,6 @@ params:
 
 ```{r setup, include=FALSE}
 
-## colocar símbolo de percentual
-## formatação ptbr incluindo vírgula
-
 
 endereco <-
   'dados/IndicadoresPainelUnidade.rds'
@@ -35,26 +32,28 @@ dados <- indicadores |>
 unidade <- dados$Unidade[1]
 
 criar.tabela <- function(tabela) {
-  valor <- gsub(',', '.', tabela[1, ]) |>
+  valor <- tabela[1, ] |> 
+    stringr::str_remove('%') |>
+    stringr::str_replace(',', '.') |> 
     as.numeric()
 
   limite <- as.numeric(tabela[2, ])
   
   cor.fonte <- ifelse(valor > limite, 'blue', 'red')
+  
+  tabela <- dplyr::slice(tabela, 1)
 
   kableExtra::kable(
     tabela,
     align = 'c',
     escape = FALSE,
-    col.names = NULL,
     row.names = FALSE
   ) |>
     kableExtra::kable_styling(font_size = '1.5em',
                               full_width = TRUE,
                               position = 'center') |>
     kableExtra::row_spec(0:nrow(tabela), extra_css = 'border-bottom: none;') |>
-    kableExtra::row_spec(1, bold = T, font_size = '1.5em', color = cor.fonte) |>
-    kableExtra::row_spec(2, bold = T, font_size = '.5em')
+    kableExtra::row_spec(1, bold = T, font_size = '1.5em', color = cor.fonte)
   
 } 
 
@@ -64,7 +63,9 @@ criar.tabela <- function(tabela) {
 
 # Painel da Unidade <br> `r unidade` {background-image="imagens/0.painel.unidade.png" background-opacity=".2"}
 
-## `r unidade` <br> Meta 1 {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+
+### `r unidade` 
 
 ::: {.columns}
 ::: {.column width="100%"}
@@ -76,7 +77,6 @@ tabela <- dados[colnames(dados) == indicador]
 
 criar.tabela(tabela)
 
-
 ```
 :::
 
@@ -84,7 +84,7 @@ criar.tabela(tabela)
 
 Julgar mais processos que os distribuídos
 
-## `r unidade` <br> Meta 3 {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+## `r unidade` {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 
 ::: {.columns}
 ::: {.column width="100%"}
