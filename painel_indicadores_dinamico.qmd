@@ -11,7 +11,7 @@ format:
     loop: true
     menu: false
 params:
-  Id: '3VCv'
+  Id: 'GEL'
 ---
 
 ```{r setup, include=FALSE}
@@ -19,7 +19,7 @@ endereco <- 'dados/IndicadoresPainelUnidade.rds'
 selecao <- c(params$Id, 'Limite', 'Nome', 'Descrição')
 indicadores <- readr::read_rds(endereco)
 dados <- dplyr::filter(indicadores, Id %in% selecao)
-unidade <- dados$Unidade[1]
+unidade <- dados$Unidade[4]
 criar.tabela <- function(tabela) {
   valor <- tabela$Valor |> 
     stringr::str_remove('%') |>
@@ -57,7 +57,7 @@ criar.tabela <- function(tabela) {
 ::: {.column width="100%"}
 ```{r}
 indicador <- 'Meta1'
-tabela <- dplyr::tibble(Nome = dplyr::pull(dados[3, ], indicador), Valor = dplyr::pull(dados[1, ], indicador), Descrição = dplyr::pull(dados[4, ], indicador), Limite = dplyr::pull(dados[2, ], indicador))
+tabela <- dplyr::tibble(Nome = dplyr::pull(dados[2, ], indicador), Valor = dplyr::pull(dados[4, ], indicador), Descrição = dplyr::pull(dados[3, ], indicador), Limite = dplyr::pull(dados[1, ], indicador))
 criar.tabela(tabela)
 ```
 :::
@@ -68,8 +68,8 @@ criar.tabela(tabela)
 ::: {.columns}
 ::: {.column width="100%"}
 ```{r}
-indicador <- 'Meta3'
-tabela <- dplyr::tibble(Nome = dplyr::pull(dados[3, ], indicador), Valor = dplyr::pull(dados[1, ], indicador), Descrição = dplyr::pull(dados[4, ], indicador), Limite = dplyr::pull(dados[2, ], indicador))
+indicador <- 'Meta2'
+tabela <- dplyr::tibble(Nome = dplyr::pull(dados[2, ], indicador), Valor = dplyr::pull(dados[4, ], indicador), Descrição = dplyr::pull(dados[3, ], indicador), Limite = dplyr::pull(dados[1, ], indicador))
 criar.tabela(tabela)
 ```
 :::
@@ -81,7 +81,7 @@ criar.tabela(tabela)
 ::: {.column width="100%"}
 ```{r}
 indicador <- 'TCL'
-tabela <- dplyr::tibble(Nome = dplyr::pull(dados[3, ], indicador), Valor = dplyr::pull(dados[1, ], indicador), Descrição = dplyr::pull(dados[4, ], indicador), Limite = dplyr::pull(dados[2, ], indicador))
+tabela <- dplyr::tibble(Nome = dplyr::pull(dados[2, ], indicador), Valor = dplyr::pull(dados[4, ], indicador), Descrição = dplyr::pull(dados[3, ], indicador), Limite = dplyr::pull(dados[1, ], indicador))
 criar.tabela(tabela)
 ```
 :::
@@ -93,7 +93,7 @@ criar.tabela(tabela)
 ::: {.column width="100%"}
 ```{r}
 indicador <- 'Parados30'
-tabela <- dplyr::tibble(Nome = dplyr::pull(dados[3, ], indicador), Valor = dplyr::pull(dados[1, ], indicador), Descrição = dplyr::pull(dados[4, ], indicador), Limite = dplyr::pull(dados[2, ], indicador))
+tabela <- dplyr::tibble(Nome = dplyr::pull(dados[2, ], indicador), Valor = dplyr::pull(dados[4, ], indicador), Descrição = dplyr::pull(dados[3, ], indicador), Limite = dplyr::pull(dados[1, ], indicador))
 criar.tabela(tabela)
 ```
 :::
@@ -105,31 +105,7 @@ criar.tabela(tabela)
 ::: {.column width="100%"}
 ```{r}
 indicador <- 'Parados100'
-tabela <- dplyr::tibble(Nome = dplyr::pull(dados[3, ], indicador), Valor = dplyr::pull(dados[1, ], indicador), Descrição = dplyr::pull(dados[4, ], indicador), Limite = dplyr::pull(dados[2, ], indicador))
-criar.tabela(tabela)
-```
-:::
-:::
-
-## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
-### `r unidade`
-::: {.columns}
-::: {.column width="100%"}
-```{r}
-indicador <- 'Audiencias'
-tabela <- dplyr::tibble(Nome = dplyr::pull(dados[3, ], indicador), Valor = dplyr::pull(dados[1, ], indicador), Descrição = dplyr::pull(dados[4, ], indicador), Limite = dplyr::pull(dados[2, ], indicador))
-criar.tabela(tabela)
-```
-:::
-:::
-
-## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
-### `r unidade`
-::: {.columns}
-::: {.column width="100%"}
-```{r}
-indicador <- 'TMT'
-tabela <- dplyr::tibble(Nome = dplyr::pull(dados[3, ], indicador), Valor = dplyr::pull(dados[1, ], indicador), Descrição = dplyr::pull(dados[4, ], indicador), Limite = dplyr::pull(dados[2, ], indicador))
+tabela <- dplyr::tibble(Nome = dplyr::pull(dados[2, ], indicador), Valor = dplyr::pull(dados[4, ], indicador), Descrição = dplyr::pull(dados[3, ], indicador), Limite = dplyr::pull(dados[1, ], indicador))
 criar.tabela(tabela)
 ```
 :::
@@ -141,7 +117,7 @@ criar.tabela(tabela)
 ::: {.column width="100%"}
 ```{r}
 indicador <- 'IAD'
-tabela <- dplyr::tibble(Nome = dplyr::pull(dados[3, ], indicador), Valor = dplyr::pull(dados[1, ], indicador), Descrição = dplyr::pull(dados[4, ], indicador), Limite = dplyr::pull(dados[2, ], indicador))
+tabela <- dplyr::tibble(Nome = dplyr::pull(dados[2, ], indicador), Valor = dplyr::pull(dados[4, ], indicador), Descrição = dplyr::pull(dados[3, ], indicador), Limite = dplyr::pull(dados[1, ], indicador))
 criar.tabela(tabela)
 ```
 :::

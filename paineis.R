@@ -26,7 +26,7 @@ conteudo_qmd <- c(
   "selecao <- c(params$Id, 'Limite', 'Nome', 'Descrição')",
   "indicadores <- readr::read_rds(endereco)",
   "dados <- dplyr::filter(indicadores, Id %in% selecao)",
-  "unidade <- dados$Unidade[1]",
+  "unidade <- dados$Unidade[4]",
   "criar.tabela <- function(tabela) {",
   "  valor <- tabela$Valor |> ",
   "    stringr::str_remove('%') |>",
@@ -64,6 +64,7 @@ conteudo_qmd <- c(
 for(indicador in nomes.indicadores) {
   
   
+  
   conteudo_qmd <- c(conteudo_qmd,
                     "## {background-image=\"imagens/1.TJRR.png\" background-opacity=\".2\"}",
                     "### `r unidade`",
@@ -72,7 +73,7 @@ for(indicador in nomes.indicadores) {
                     "```{r}",
                     paste0("indicador <- '", indicador, "'"),
                     # Aqui, criamos a tabela diretamente com a coluna do indicador específico
-                    paste0("tabela <- dplyr::tibble(Nome = dplyr::pull(dados[3, ], indicador), Valor = dplyr::pull(dados[1, ], indicador), Descrição = dplyr::pull(dados[4, ], indicador), Limite = dplyr::pull(dados[2, ], indicador))"),
+                    paste0("tabela <- dplyr::tibble(Nome = dplyr::pull(dados[2, ], indicador), Valor = dplyr::pull(dados[4, ], indicador), Descrição = dplyr::pull(dados[3, ], indicador), Limite = dplyr::pull(dados[1, ], indicador))"),
                     "criar.tabela(tabela)",
                     "```",
                     ":::",

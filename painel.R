@@ -5,15 +5,10 @@ Teste <- TRUE
 endereco <-
   'https://docs.google.com/spreadsheets/d/1Nw9Xj8TcuwFxeTml8oE_fPH0-SXWjRQzOCJsP_t1sms/edit#gid=0'
 
-dados <-
+indicadores <-
   googlesheets4::read_sheet(endereco,
-                            sheet = '1InsT')
+                            sheet = '2InsT')
 
-parametros <-
-  googlesheets4::read_sheet(endereco,
-                            sheet = 'ParametrosT')
-
-indicadores <- rbind(dados, parametros)
 
 readr::write_rds(indicadores, 'dados/IndicadoresPainelUnidade.rds')
 
