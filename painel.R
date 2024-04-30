@@ -7,7 +7,7 @@ endereco <-
 
 indicadores <-
   googlesheets4::read_sheet(endereco,
-                            sheet = '2InsT')
+                            sheet = '1InsT')
 
 
 readr::write_rds(indicadores, 'dados/IndicadoresPainelUnidade.rds')
