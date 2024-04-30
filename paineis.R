@@ -11,7 +11,7 @@ conteudo_qmd <- c(
   "    css: 'configuracao/painel.unidade.css'",
   "    slide-number: c/t",
   "    embed-resources: true",
-  "    auto-slide: 3000",
+  "    auto-slide: 10000",
   "    transition: slide",
   "    transition-speed: fast",
   "    background-transition: fade",
