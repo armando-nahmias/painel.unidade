@@ -1,7 +1,7 @@
 ---
 format: 
   revealjs:
-    css: 'configuracao/painel.unidade.css'
+    css: '../configuracao/painel.unidade.css'
     slide-number: c/t
     embed-resources: true
     auto-slide: 10000
@@ -15,7 +15,7 @@ params:
 ---
 
 ```{r setup, include=FALSE}
-endereco <- 'dados/IndicadoresPainelUnidade.rds'
+endereco <- '../dados/Indicadores.rds'
 selecao <- c(params$Id, 'Limite', 'Nome', 'Descrição')
 indicadores <- readr::read_rds(endereco)
 dados <- dplyr::filter(indicadores, Id %in% selecao)

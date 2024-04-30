@@ -1,0 +1,52 @@
+---
+format: 
+  revealjs:
+    css: 'configuracao/painel.unidade.css'
+    slide-number: c/t
+    embed-resources: true
+    auto-slide: 10000
+    transition: slide
+    transition-speed: fast
+    background-transition: fade
+    loop: true
+    menu: false
+params:
+  Id: '3VCv'
+---
+
+```{r setup, include=FALSE}
+endereco <- 'dados/Indicadores.rds'
+selecao <- c(params$Id, 'Limite', 'Nome', 'Descrição')
+indicadores <- readr::read_rds(endereco)
+dados <- dplyr::filter(indicadores, Id %in% selecao)
+unidade <- dados$Unidade[4]
+criar.tabela <- function(tabela) {
+  valor <- tabela$Valor |> 
+    stringr::str_remove('%') |>
+    stringr::str_replace(',', '.') |> 
+    as.numeric()
+
+  limite <- as.numeric(tabela$Limite)
+
+  cor.fonte <- ifelse(valor > limite, 'blue', 'red')
+
+  tabela <- tabela |> dplyr::select(-Limite) |> tidyr::pivot_longer(cols = everything(), values_to = 'Valores') |> dplyr::select(-name)
+
+  kableExtra::kable(
+    tabela,
+    align = 'c',
+    escape = FALSE,
+    row.names = FALSE,
+    col.names = NULL
+  ) |>
+    kableExtra::kable_styling(font_size = '1.5em',
+                              full_width = TRUE,
+                              position = 'center') |>
+    kableExtra::row_spec(0:nrow(tabela), extra_css = 'border-bottom: none;') |>
+    kableExtra::row_spec(1, bold = T, font_size = '1.5em') |>
+    kableExtra::row_spec(2, bold = T, font_size = '2em', color = cor.fonte) |>
+    kableExtra::row_spec(3, bold = T, font_size = '.5em')
+}
+```
+
+# Painel da Unidade <br> `r unidade` {background-image="imagens/0.painel.unidade.png" background-opacity=".2"}
