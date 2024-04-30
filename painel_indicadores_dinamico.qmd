@@ -4,14 +4,14 @@ format:
     css: 'configuracao/painel.unidade.css'
     slide-number: c/t
     embed-resources: true
-    auto-slide: 3000
+    auto-slide: 10000
     transition: slide
     transition-speed: fast
     background-transition: fade
     loop: true
     menu: false
 params:
-  Id: 'GEL'
+  Id: '3VCv'
 ---
 
 ```{r setup, include=FALSE}
@@ -68,7 +68,7 @@ criar.tabela(tabela)
 ::: {.columns}
 ::: {.column width="100%"}
 ```{r}
-indicador <- 'Meta2'
+indicador <- 'Meta3'
 tabela <- dplyr::tibble(Nome = dplyr::pull(dados[2, ], indicador), Valor = dplyr::pull(dados[4, ], indicador), Descrição = dplyr::pull(dados[3, ], indicador), Limite = dplyr::pull(dados[1, ], indicador))
 criar.tabela(tabela)
 ```
@@ -105,6 +105,30 @@ criar.tabela(tabela)
 ::: {.column width="100%"}
 ```{r}
 indicador <- 'Parados100'
+tabela <- dplyr::tibble(Nome = dplyr::pull(dados[2, ], indicador), Valor = dplyr::pull(dados[4, ], indicador), Descrição = dplyr::pull(dados[3, ], indicador), Limite = dplyr::pull(dados[1, ], indicador))
+criar.tabela(tabela)
+```
+:::
+:::
+
+## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+### `r unidade`
+::: {.columns}
+::: {.column width="100%"}
+```{r}
+indicador <- 'Audiencias'
+tabela <- dplyr::tibble(Nome = dplyr::pull(dados[2, ], indicador), Valor = dplyr::pull(dados[4, ], indicador), Descrição = dplyr::pull(dados[3, ], indicador), Limite = dplyr::pull(dados[1, ], indicador))
+criar.tabela(tabela)
+```
+:::
+:::
+
+## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+### `r unidade`
+::: {.columns}
+::: {.column width="100%"}
+```{r}
+indicador <- 'TMT'
 tabela <- dplyr::tibble(Nome = dplyr::pull(dados[2, ], indicador), Valor = dplyr::pull(dados[4, ], indicador), Descrição = dplyr::pull(dados[3, ], indicador), Limite = dplyr::pull(dados[1, ], indicador))
 criar.tabela(tabela)
 ```
