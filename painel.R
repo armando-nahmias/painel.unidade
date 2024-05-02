@@ -27,11 +27,14 @@ unidades <- list(
 for (instancia in names(unidades)) {
   nomes.indicadores <- colnames(indicadores[[instancia]])[-c(1,2)]
 
-  conteudo.base.qmd <- readLines('qmd/conteudo.base.qmd.qmd')
+  conteudo.base.qmd <- readLines('conteudo.base.qmd.qmd')
+  
+  unidade.padrao <- unidades[[instancia]][1]
+  conteudo.base.qmd <- gsub('{{unidade.padrao}}', unidade.padrao, conteudo.base.qmd, fixed = TRUE)
 
   for(indicador in nomes.indicadores) {
 
-    conteudo.variavel.qmd <- readLines('qmd/conteudo.variavel.qmd.qmd')
+    conteudo.variavel.qmd <- readLines('conteudo.variavel.qmd.qmd')
 
     conteudo.variavel.qmd <- gsub('{{indicador}}', indicador, conteudo.variavel.qmd, fixed = TRUE)
 
@@ -41,13 +44,16 @@ for (instancia in names(unidades)) {
     )
   }
   
+  readr::write_rds(indicadores[instancia], 'dados/Indicadores.rds')
   
-  
-  arquivo.destino <- glue::glue('qmd/painel_indicadores_{instancia}.qmd')
+  arquivo.destino <- glue::glue('painel_indicadores_{instancia}.qmd')
   
   writeLines(conteudo.base.qmd, arquivo.destino)
   
-  quarto::quarto_render(input = arquivo.destino)
+  parametros <- list(Id = unidades[[instancia]])
+  arquivos.saida <- paste0(unidades[[instancia]], '.html')
+  
+  quarto::quarto_render(input = arquivo.destino, execute_params = parametros, output_file = arquivos.saida)
 
 }
 
