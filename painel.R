@@ -27,14 +27,14 @@ unidades <- list(
 for (instancia in names(unidades)) {
   nomes.indicadores <- colnames(indicadores[[instancia]])[-c(1,2)]
 
-  conteudo.base.qmd <- readLines('conteudo.base.qmd.qmd')
+  conteudo.base.qmd <- readLines('modelo/conteudo.base.qmd.qmd')
   
   unidade.padrao <- unidades[[instancia]][1]
   conteudo.base.qmd <- gsub('{{unidade.padrao}}', unidade.padrao, conteudo.base.qmd, fixed = TRUE)
 
   for(indicador in nomes.indicadores) {
 
-    conteudo.variavel.qmd <- readLines('conteudo.variavel.qmd.qmd')
+    conteudo.variavel.qmd <- readLines('modelo/conteudo.variavel.qmd.qmd')
 
     conteudo.variavel.qmd <- gsub('{{indicador}}', indicador, conteudo.variavel.qmd, fixed = TRUE)
 
@@ -52,9 +52,22 @@ for (instancia in names(unidades)) {
   
   parametros <- list(Id = unidades[[instancia]])
   arquivos.saida <- paste0(unidades[[instancia]], '.html')
+  diretorio.destino <- 'pagina/'
+
+    
+  for (i in seq_along(unidades[[instancia]])) {
+    quarto::quarto_render(
+      input = arquivo.destino,
+      execute_params = list(Id = unidades[[instancia]][i]),
+      output_file = arquivos.saida[i]
+    )
+    
+    file.rename(arquivos.saida[i], paste0(diretorio.destino, arquivos.saida[i]))
+  }
   
-  quarto::quarto_render(input = arquivo.destino, execute_params = parametros, output_file = arquivos.saida)
+  file.rename(arquivo.destino, paste0(diretorio.destino, arquivo.destino))
+  
+  
+  
 
 }
-
-
