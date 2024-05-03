@@ -27,17 +27,23 @@ selecao <-
     'Medida')
 dados <- dplyr::filter(indicadores, Id %in% selecao)
 
-vara <- indicadores$Unidade[6]
+vara <- dados$Unidade[5]
 
 criar.tabela <- function(tabela) {
-  valor <- tabela$Valor |>
-    stringr::str_remove('%') |>
-    stringr::str_replace(',', '.') |>
-    as.numeric()
+  valor <- tabela$Valor |> 
+    stringr::str_replace(',', '.') |> 
+    readr::parse_number()
   
-  limite <- as.numeric(tabela$Limite)
   
-  cor.fonte <- ifelse(ifelse(tabela$Polaridade == 'maior melhor', valor > limite, valor < limite), 'blue', 'red')
+  limite <- tabela$Limite |>
+    readr::parse_number()
+  
+  cor.fonte <- dplyr::case_when(
+    valor == limite ~ 'blue',
+    tabela$Polaridade == 'maior melhor' & valor > limite ~ 'blue',
+    tabela$Polaridade == 'menor melhor' & valor < limite ~ 'blue',
+    TRUE ~ 'red'
+  )
   
   tabela <-
     tabela |>

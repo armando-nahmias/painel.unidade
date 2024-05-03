@@ -1,7 +1,6 @@
 ## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 ### `r vara`
-::: {.columns}
-::: {.column width="100%"}
+
 ```{r}
 indicador <- '{{indicador}}'
 
@@ -10,11 +9,13 @@ tabela <- dplyr::tibble(
   Nome = dplyr::pull(dados[2, ], indicador),
   Descrição = dplyr::pull(dados[3, ], indicador),
   Polaridade = dplyr::pull(dados[4, ], indicador),
-  Medida = dplyr::pull(dados[5, ], indicador),
-  Valor = dplyr::pull(dados[6, ], indicador)
+  Valor = dplyr::pull(dados[5, ], indicador)
 )
 
 criar.tabela(tabela)
 ```
-:::
+
+
+::: {style="text-align: right; font-size: 0.2em;"}
+Polaridade: O limite do indicador é de `r tabela$Limite`. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'superiores', 'inferiores')` a esse limite ficam na cor azul e são considerados positivos. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'inferiores', 'superiores')` ficam em vermelho e indicam um desempenho abaixo do desejado.
 :::
