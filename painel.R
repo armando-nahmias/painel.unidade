@@ -72,3 +72,5 @@ quarto::quarto_render(
   input = 'modelo/index.qmd',
   output_file = 'index.html'
 )
+
+
