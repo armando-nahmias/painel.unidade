@@ -27,17 +27,23 @@ selecao <-
     'Medida')
 dados <- dplyr::filter(indicadores, Id %in% selecao)
 
-vara <- indicadores$Unidade[6]
+vara <- dados$Unidade[5]
 
 criar.tabela <- function(tabela) {
-  valor <- tabela$Valor |>
-    stringr::str_remove('%') |>
-    stringr::str_replace(',', '.') |>
-    as.numeric()
+  valor <- tabela$Valor |> 
+    stringr::str_replace(',', '.') |> 
+    readr::parse_number()
   
-  limite <- as.numeric(tabela$Limite)
   
-  cor.fonte <- ifelse(ifelse(tabela$Polaridade == 'maior melhor', valor > limite, valor < limite), 'blue', 'red')
+  limite <- tabela$Limite |>
+    readr::parse_number()
+  
+  cor.fonte <- dplyr::case_when(
+    valor == limite ~ 'blue',
+    tabela$Polaridade == 'maior melhor' & valor > limite ~ 'blue',
+    tabela$Polaridade == 'menor melhor' & valor < limite ~ 'blue',
+    TRUE ~ 'red'
+  )
   
   tabela <-
     tabela |>
@@ -68,8 +74,7 @@ criar.tabela <- function(tabela) {
 # Painel da Unidade <br> `r vara` {background-image="imagens/0.painel.unidade.png" background-opacity=".2"}
 ## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 ### `r vara`
-::: {.columns}
-::: {.column width="100%"}
+
 ```{r}
 indicador <- 'Meta1'
 
@@ -78,18 +83,19 @@ tabela <- dplyr::tibble(
   Nome = dplyr::pull(dados[2, ], indicador),
   Descrição = dplyr::pull(dados[3, ], indicador),
   Polaridade = dplyr::pull(dados[4, ], indicador),
-  Medida = dplyr::pull(dados[5, ], indicador),
-  Valor = dplyr::pull(dados[6, ], indicador)
+  Valor = dplyr::pull(dados[5, ], indicador)
 )
 
 criar.tabela(tabela)
 ```
-:::
+
+
+::: {style="text-align: right; font-size: 0.2em;"}
+Polaridade: O limite do indicador é de `r tabela$Limite`. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'superiores', 'inferiores')` a esse limite ficam na cor azul e são considerados positivos. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'inferiores', 'superiores')` ficam em vermelho e indicam um desempenho abaixo do desejado.
 :::
 ## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 ### `r vara`
-::: {.columns}
-::: {.column width="100%"}
+
 ```{r}
 indicador <- 'Meta3'
 
@@ -98,18 +104,19 @@ tabela <- dplyr::tibble(
   Nome = dplyr::pull(dados[2, ], indicador),
   Descrição = dplyr::pull(dados[3, ], indicador),
   Polaridade = dplyr::pull(dados[4, ], indicador),
-  Medida = dplyr::pull(dados[5, ], indicador),
-  Valor = dplyr::pull(dados[6, ], indicador)
+  Valor = dplyr::pull(dados[5, ], indicador)
 )
 
 criar.tabela(tabela)
 ```
-:::
+
+
+::: {style="text-align: right; font-size: 0.2em;"}
+Polaridade: O limite do indicador é de `r tabela$Limite`. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'superiores', 'inferiores')` a esse limite ficam na cor azul e são considerados positivos. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'inferiores', 'superiores')` ficam em vermelho e indicam um desempenho abaixo do desejado.
 :::
 ## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 ### `r vara`
-::: {.columns}
-::: {.column width="100%"}
+
 ```{r}
 indicador <- 'TCL'
 
@@ -118,18 +125,19 @@ tabela <- dplyr::tibble(
   Nome = dplyr::pull(dados[2, ], indicador),
   Descrição = dplyr::pull(dados[3, ], indicador),
   Polaridade = dplyr::pull(dados[4, ], indicador),
-  Medida = dplyr::pull(dados[5, ], indicador),
-  Valor = dplyr::pull(dados[6, ], indicador)
+  Valor = dplyr::pull(dados[5, ], indicador)
 )
 
 criar.tabela(tabela)
 ```
-:::
+
+
+::: {style="text-align: right; font-size: 0.2em;"}
+Polaridade: O limite do indicador é de `r tabela$Limite`. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'superiores', 'inferiores')` a esse limite ficam na cor azul e são considerados positivos. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'inferiores', 'superiores')` ficam em vermelho e indicam um desempenho abaixo do desejado.
 :::
 ## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 ### `r vara`
-::: {.columns}
-::: {.column width="100%"}
+
 ```{r}
 indicador <- 'Parados30'
 
@@ -138,18 +146,19 @@ tabela <- dplyr::tibble(
   Nome = dplyr::pull(dados[2, ], indicador),
   Descrição = dplyr::pull(dados[3, ], indicador),
   Polaridade = dplyr::pull(dados[4, ], indicador),
-  Medida = dplyr::pull(dados[5, ], indicador),
-  Valor = dplyr::pull(dados[6, ], indicador)
+  Valor = dplyr::pull(dados[5, ], indicador)
 )
 
 criar.tabela(tabela)
 ```
-:::
+
+
+::: {style="text-align: right; font-size: 0.2em;"}
+Polaridade: O limite do indicador é de `r tabela$Limite`. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'superiores', 'inferiores')` a esse limite ficam na cor azul e são considerados positivos. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'inferiores', 'superiores')` ficam em vermelho e indicam um desempenho abaixo do desejado.
 :::
 ## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 ### `r vara`
-::: {.columns}
-::: {.column width="100%"}
+
 ```{r}
 indicador <- 'Parados100'
 
@@ -158,18 +167,19 @@ tabela <- dplyr::tibble(
   Nome = dplyr::pull(dados[2, ], indicador),
   Descrição = dplyr::pull(dados[3, ], indicador),
   Polaridade = dplyr::pull(dados[4, ], indicador),
-  Medida = dplyr::pull(dados[5, ], indicador),
-  Valor = dplyr::pull(dados[6, ], indicador)
+  Valor = dplyr::pull(dados[5, ], indicador)
 )
 
 criar.tabela(tabela)
 ```
-:::
+
+
+::: {style="text-align: right; font-size: 0.2em;"}
+Polaridade: O limite do indicador é de `r tabela$Limite`. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'superiores', 'inferiores')` a esse limite ficam na cor azul e são considerados positivos. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'inferiores', 'superiores')` ficam em vermelho e indicam um desempenho abaixo do desejado.
 :::
 ## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 ### `r vara`
-::: {.columns}
-::: {.column width="100%"}
+
 ```{r}
 indicador <- 'Audiencias'
 
@@ -178,18 +188,19 @@ tabela <- dplyr::tibble(
   Nome = dplyr::pull(dados[2, ], indicador),
   Descrição = dplyr::pull(dados[3, ], indicador),
   Polaridade = dplyr::pull(dados[4, ], indicador),
-  Medida = dplyr::pull(dados[5, ], indicador),
-  Valor = dplyr::pull(dados[6, ], indicador)
+  Valor = dplyr::pull(dados[5, ], indicador)
 )
 
 criar.tabela(tabela)
 ```
-:::
+
+
+::: {style="text-align: right; font-size: 0.2em;"}
+Polaridade: O limite do indicador é de `r tabela$Limite`. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'superiores', 'inferiores')` a esse limite ficam na cor azul e são considerados positivos. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'inferiores', 'superiores')` ficam em vermelho e indicam um desempenho abaixo do desejado.
 :::
 ## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 ### `r vara`
-::: {.columns}
-::: {.column width="100%"}
+
 ```{r}
 indicador <- 'TMT'
 
@@ -198,18 +209,19 @@ tabela <- dplyr::tibble(
   Nome = dplyr::pull(dados[2, ], indicador),
   Descrição = dplyr::pull(dados[3, ], indicador),
   Polaridade = dplyr::pull(dados[4, ], indicador),
-  Medida = dplyr::pull(dados[5, ], indicador),
-  Valor = dplyr::pull(dados[6, ], indicador)
+  Valor = dplyr::pull(dados[5, ], indicador)
 )
 
 criar.tabela(tabela)
 ```
-:::
+
+
+::: {style="text-align: right; font-size: 0.2em;"}
+Polaridade: O limite do indicador é de `r tabela$Limite`. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'superiores', 'inferiores')` a esse limite ficam na cor azul e são considerados positivos. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'inferiores', 'superiores')` ficam em vermelho e indicam um desempenho abaixo do desejado.
 :::
 ## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
 ### `r vara`
-::: {.columns}
-::: {.column width="100%"}
+
 ```{r}
 indicador <- 'IAD'
 
@@ -218,11 +230,13 @@ tabela <- dplyr::tibble(
   Nome = dplyr::pull(dados[2, ], indicador),
   Descrição = dplyr::pull(dados[3, ], indicador),
   Polaridade = dplyr::pull(dados[4, ], indicador),
-  Medida = dplyr::pull(dados[5, ], indicador),
-  Valor = dplyr::pull(dados[6, ], indicador)
+  Valor = dplyr::pull(dados[5, ], indicador)
 )
 
 criar.tabela(tabela)
 ```
-:::
+
+
+::: {style="text-align: right; font-size: 0.2em;"}
+Polaridade: O limite do indicador é de `r tabela$Limite`. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'superiores', 'inferiores')` a esse limite ficam na cor azul e são considerados positivos. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'inferiores', 'superiores')` ficam em vermelho e indicam um desempenho abaixo do desejado.
 :::
