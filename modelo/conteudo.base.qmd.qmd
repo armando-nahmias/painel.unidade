@@ -15,24 +15,36 @@ params:
 ---
 
 ```{r setup, include=FALSE}
-endereco <- 'dados/Indicadores.rds'
-selecao <- c(params$Id, 'Limite', 'Nome', 'Descrição')
-indicadores <- readr::read_rds(endereco)
-indicadores <- indicadores[[1]]
+endereco <- 'dados/indicadores.rds'
+indicadores <- readr::read_rds(endereco) |> purrr::pluck(1)
+
+selecao <-
+  c(params$Id,
+    'Limite',
+    'Nome',
+    'Descrição',
+    'Polaridade',
+    'Medida')
 dados <- dplyr::filter(indicadores, Id %in% selecao)
-unidade <- dados$Unidade[4]
+
+vara <- indicadores$Unidade[6]
+
 criar.tabela <- function(tabela) {
-  valor <- tabela$Valor |> 
+  valor <- tabela$Valor |>
     stringr::str_remove('%') |>
-    stringr::str_replace(',', '.') |> 
+    stringr::str_replace(',', '.') |>
     as.numeric()
-
+  
   limite <- as.numeric(tabela$Limite)
-
-  cor.fonte <- ifelse(valor > limite, 'blue', 'red')
-
-  tabela <- tabela |> dplyr::select(-Limite) |> tidyr::pivot_longer(cols = everything(), values_to = 'Valores') |> dplyr::select(-name)
-
+  
+  cor.fonte <- ifelse(ifelse(tabela$Polaridade == 'maior melhor', valor > limite, valor < limite), 'blue', 'red')
+  
+  tabela <-
+    tabela |>
+    dplyr::select(Nome, Valor, Descrição) |>
+    tidyr::pivot_longer(cols = everything(), values_to = 'Valores') |>
+    dplyr::select(-name)
+  
   kableExtra::kable(
     tabela,
     align = 'c',
@@ -45,9 +57,12 @@ criar.tabela <- function(tabela) {
                               position = 'center') |>
     kableExtra::row_spec(0:nrow(tabela), extra_css = 'border-bottom: none;') |>
     kableExtra::row_spec(1, bold = T, font_size = '1.5em') |>
-    kableExtra::row_spec(2, bold = T, font_size = '2em', color = cor.fonte) |>
+    kableExtra::row_spec(2,
+                         bold = T,
+                         font_size = '2em',
+                         color = cor.fonte) |>
     kableExtra::row_spec(3, bold = T, font_size = '.5em')
 }
 ```
 
-# Painel da Unidade <br> `r unidade` {background-image="imagens/0.painel.unidade.png" background-opacity=".2"}
+# Painel da Unidade <br> `r vara` {background-image="imagens/0.painel.unidade.png" background-opacity=".2"}

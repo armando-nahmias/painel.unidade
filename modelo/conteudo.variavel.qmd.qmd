@@ -1,15 +1,17 @@
 ## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
-### `r unidade`
+### `r vara`
 ::: {.columns}
 ::: {.column width="100%"}
 ```{r}
 indicador <- '{{indicador}}'
 
 tabela <- dplyr::tibble(
+  Limite = dplyr::pull(dados[1, ], indicador),
   Nome = dplyr::pull(dados[2, ], indicador),
-  Valor = dplyr::pull(dados[4, ], indicador),
   Descrição = dplyr::pull(dados[3, ], indicador),
-  Limite = dplyr::pull(dados[1, ], indicador)
+  Polaridade = dplyr::pull(dados[4, ], indicador),
+  Medida = dplyr::pull(dados[5, ], indicador),
+  Valor = dplyr::pull(dados[6, ], indicador)
 )
 
 criar.tabela(tabela)

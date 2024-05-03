@@ -3,25 +3,30 @@ title: 'Painéis das Unidades'
 format: 
   html:
     embed-resources: true
+    minimal: true
 
 ---
 
 ```{r echo=FALSE}
-endereco <-
-  '../dados/IndicadoresPainelUnidade.rds'
 
-indicadores <- readr::read_rds(endereco)
+dados.painel <- readr::read_rds('../dados/dados.painel.rds')
 
-selecao <- indicadores |> 
-  dplyr::filter(!is.na(Unidade)) |> 
-  dplyr::mutate(
-    Unidade = sprintf('<a href="relatorio_%s.html">%s</a>', Id, Unidade)
-  ) |> 
-  dplyr::select(Unidade)
+lista.unidades <- list()
 
+for (instancia in dados.painel) {
+  selecao <- instancia |>
+    dplyr::filter(!is.na(Unidade)) |>
+    dplyr::mutate(Unidade = sprintf('<a href="pagina/relatorio_%s.html">%s</a>', Id, Unidade)) |>
+    dplyr::select(Unidade)
+  
+  lista.unidades <- append(lista.unidades, selecao)
+  
+}
+
+unidades <- unlist(lista.unidades)
 
 kableExtra::kable(
-  selecao,
+  unidades,
   align = 'c',
   escape = FALSE,
   col.names = NULL
