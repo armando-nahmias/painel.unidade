@@ -1,4 +1,5 @@
-## {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+##  {background-image="imagens/1.TJRR.png" background-opacity=".2"}
+
 ### `r vara`
 
 ```{r}
@@ -15,7 +16,8 @@ tabela <- dplyr::tibble(
 criar.tabela(tabela)
 ```
 
-
-::: {style="text-align: right; font-size: 0.2em;"}
-Polaridade: O limite do indicador é de `r tabela$Limite`. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'superiores', 'inferiores')` a esse limite ficam na cor azul e são considerados positivos. Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'inferiores', 'superiores')` ficam em vermelho e indicam um desempenho abaixo do desejado.
+::: {style="text-align: right; font-size: 18px;"}
+Polaridade: O limite do indicador é de `r tabela$Limite`.\
+Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'superiores', 'inferiores')` a esse limite ficam na cor azul e são considerados positivos.\
+Valores `r ifelse(tabela$Polaridade == 'maior melhor', 'inferiores', 'superiores')` ficam em vermelho e indicam um desempenho abaixo do desejado.
 :::
