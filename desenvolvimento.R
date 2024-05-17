@@ -18,7 +18,8 @@ for (instancia in instancias) {
   unidades[[instancia]] <- dados.painel[[instancia]] |> 
     dplyr::filter(!is.na(Unidade)) |> 
     dplyr::select(Id) |> 
-    dplyr::pull()
+    dplyr::pull() |> 
+    dplyr::first()
 }
 
 readr::write_rds(dados.painel, 'dados/dados.painel.rds')
