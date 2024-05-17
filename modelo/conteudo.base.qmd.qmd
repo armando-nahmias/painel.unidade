@@ -30,8 +30,8 @@ dados <- dplyr::filter(indicadores, Id %in% selecao)
 vara <- dados$Unidade[5]
 
 criar.tabela <- function(tabela) {
-  valor <- tabela$Valor |> 
-    stringr::str_replace(',', '.') |> 
+  valor <- tabela$Valor |>
+    stringr::str_replace(',', '.') |>
     readr::parse_number()
   
   
@@ -58,16 +58,12 @@ criar.tabela <- function(tabela) {
     row.names = FALSE,
     col.names = NULL
   ) |>
-    kableExtra::kable_styling(font_size = '1.5em',
-                              full_width = TRUE,
+    kableExtra::kable_styling(full_width = TRUE,
                               position = 'center') |>
     kableExtra::row_spec(0:nrow(tabela), extra_css = 'border-bottom: none;') |>
-    kableExtra::row_spec(1, bold = T, font_size = '1.5em') |>
-    kableExtra::row_spec(2,
-                         bold = T,
-                         font_size = '2em',
-                         color = cor.fonte) |>
-    kableExtra::row_spec(3, bold = T, font_size = '.5em')
+    kableExtra::row_spec(1, bold = T, font_size = '80px') |>
+    kableExtra::row_spec(2, bold = T, font_size = '120px', color = cor.fonte) |>
+    kableExtra::row_spec(3, bold = T, font_size = '40px')
 }
 ```
 
