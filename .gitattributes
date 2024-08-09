@@ -1,0 +1,21 @@
+
+# Define arquivos R e R Markdown como linguagem R
+*.R linguist-language=R
+*.Rmd linguist-language=R
+
+# Define arquivos Quarto Markdown como documentação
+*.qmd linguist-documentation
+
+# Define arquivos CSS, CSV, PDF e JSON como vendored
+*.css linguist-vendored
+*.csv linguist-vendored
+*.pdf linguist-vendored
+*.json linguist-vendored
+
+# Define arquivos DOCX e HTML como gerados automaticamente
+*.docx linguist-generated
+*.html linguist-generated
+
+
+despachos/* linguist-documentation
+dados/* linguist-vendored
